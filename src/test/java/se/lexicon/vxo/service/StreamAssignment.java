@@ -26,7 +26,7 @@ public class StreamAssignment {
     private static List<Person> people = People.INSTANCE.getPeople();
 
     /**
-     * Turn integers into a stream then use forEach as a terminal operation to print out the numbers
+     * Turn integers into a stream then use forEach as a terminal operation to print out the numbers.
      */
     @Test
     public void task1() {

@@ -61,7 +61,7 @@ public class StreamAssignment {
     @Test
     public void task4() {
         int expectedSize = 4988;
-        List<Person> females = people.stream().filter(person -> person.getGender()==Gender.FEMALE)
+        List<Person> females = people.stream().filter(person -> person.getGender() == Gender.FEMALE)
                 .collect(Collectors.toList());
         assertNotNull(females);
         assertEquals(expectedSize, females.size());
@@ -88,7 +88,7 @@ public class StreamAssignment {
     public void task6() {
         int expectedLength = 3;
         Person[] result = people.stream().filter(person -> person.getFirstName().equals("Erik")).toArray(Person[]::new);
-         assertNotNull(result);
+        assertNotNull(result);
         assertEquals(expectedLength, result.length);
     }
 
@@ -99,7 +99,7 @@ public class StreamAssignment {
     public void task7() {
         Person expected = new Person(5436, "Tea", "Håkansson",
                 LocalDate.parse("1968-01-25"), Gender.FEMALE);
-        Optional<Person> optional = people.stream().filter(person -> person.getPersonId()==expected.getPersonId()).findFirst();
+        Optional<Person> optional = people.stream().filter(person -> person.getPersonId() == expected.getPersonId()).findFirst();
         assertNotNull(optional);
         assertTrue(optional.isPresent());
         assertEquals(expected, optional.get());
@@ -139,10 +139,7 @@ public class StreamAssignment {
     public void task10() {
         String expected = "WEDNESDAY 19 DECEMBER 2012";
         int personId = 5914;
-
         Optional<String> optional = null;
-
-        //Write code here
 
         assertNotNull(optional);
         assertTrue(optional.isPresent());
@@ -155,15 +152,9 @@ public class StreamAssignment {
      */
     @Test
     public void task11() {
-        ToIntFunction<Person> personToAge =
-                person -> Period.between(person.getDateOfBirth(), LocalDate.parse("2019-12-20")).getYears();
+        ToIntFunction<Person> personToAge = person -> Period.between(person.getDateOfBirth(), LocalDate.parse("2019-12-20")).getYears();
         double expected = 54.42;
-        double averageAge = 0;
-        people.stream();
-
-
-        //Write code here
-
+        double averageAge = people.stream().mapToInt(personToAge).average().orElse(0);
         assertTrue(averageAge > 0);
         assertEquals(expected, averageAge, .01);
     }
@@ -176,8 +167,6 @@ public class StreamAssignment {
         String[] expected = {"Ada", "Ana", "Anna", "Ava", "Aya", "Bob", "Ebbe", "Efe", "Eje", "Elle", "Hannah", "Maram", "Natan", "Otto"};
 
         String[] result = null;
-
-        //Write code here
 
         assertNotNull(result);
         assertArrayEquals(expected, result);
@@ -204,9 +193,8 @@ public class StreamAssignment {
     public void task14() {
         LocalDate[] _2020_dates = null;
 
+
         //Write code here
-
-
         assertNotNull(_2020_dates);
         assertEquals(366, _2020_dates.length);
         assertEquals(LocalDate.parse("2020-01-01"), _2020_dates[0]);

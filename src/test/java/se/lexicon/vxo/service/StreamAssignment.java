@@ -123,12 +123,10 @@ public class StreamAssignment {
         int expectedSize = 892;
         LocalDate date = LocalDate.parse("1920-01-01");
         Predicate<Person> personPredicate = person -> person.getDateOfBirth().isBefore(date);
-        Function<Person, PersonDto> personPersonDtoFunction = new Function<Person, PersonDto>() {
-            @Override
-            public PersonDto apply(Person person) {
-                PersonDto personDto = new PersonDto(person.getPersonId(), person.getFirstName() + " " + person.getLastName());
-                return personDto;
-            }
+        Function<Person, PersonDto> personPersonDtoFunction = person -> {
+            PersonDto personDto = new PersonDto(person.getPersonId(),
+                    person.getFirstName() + " " + person.getLastName());
+            return personDto;
         };
         List<PersonDto> dtoList = people.stream().filter(personPredicate).map(personPersonDtoFunction)
                 .collect(Collectors.toList());
